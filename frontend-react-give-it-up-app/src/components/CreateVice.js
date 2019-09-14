@@ -4,12 +4,13 @@ import Modal from 'react-bootstrap/Modal'
 import useCreateViceForm from '../CustomHooks'
 import Button from 'react-bootstrap/Button'
 import Form from 'react-bootstrap/Form'
+import { createVice } from '../redux/actions/viceActions'
 
 
 const CreateVice = (props) => {
 
   const [show, setShow] = useState(false);
-  const {inputs, handleInputChange, handleSubmit} = useCreateViceForm();
+  const {inputs, handleInputChange, handleSubmit} = useCreateViceForm(createVice);
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -17,8 +18,8 @@ const CreateVice = (props) => {
     return (
     <React.Fragment>
 
-    <Button variant="primary" onClick={handleShow}>
-     Launch demo modal
+    <Button variant="dark" onClick={handleShow}>
+     Add Your Own Vice
    </Button>
 
    <Modal
@@ -33,6 +34,19 @@ const CreateVice = (props) => {
      <Modal.Body>
         <p>What Vice are you giving up?</p>
         <Form onSubmit={handleSubmit}>
+          <Form.Group>
+          <Form.Label>Vice Categories</Form.Label>
+            <Form.Control as="select" value={inputs.category_id} onChange={(e) => handleInputChange(props.categories)}>
+              {
+                props.categories.map(cat => < option
+                    key={cat.id}
+                    value={cat.id}
+                  >
+                    {cat.name}
+                  </option>)
+              }
+            </Form.Control>
+          </Form.Group>
           <Form.Group>
           <Form.Label>Vice Name</Form.Label>
             <Form.Control
@@ -80,14 +94,7 @@ const CreateVice = (props) => {
 
 }
 
-const mapStateToProps = (state) => {
-  return {
-    newVice: state
-  }
-}
 
-const mapDispatchToProps={
+const mapDispatchToProps= { createVice }
 
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(CreateVice)
+export default connect(null, mapDispatchToProps)(CreateVice)

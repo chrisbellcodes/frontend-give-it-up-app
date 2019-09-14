@@ -31,19 +31,20 @@ class Login extends React.Component {
     }
 
     return (
-      <div >
+      <div>
+        <h2 className="d-flex justify-content-center pt" >Login</h2>
         <Form onSubmit={this.handleSubmit}>
-        <Form.Group as={Col} lg={3}>
+        <Form.Group as={Col}>
           <Form.Label>First Name</Form.Label>
             <Form.Control
                 type="text"
                 name="first_name"
-                placeholder="email"
+                placeholder="Enter your name"
                 value={this.state.firstName}
                 onChange={this.handleChange}
                 />
         </Form.Group>
-        <Form.Group as={Col} md={3}>
+        <Form.Group as={Col}>
             <Form.Label>Password</Form.Label>
             <Form.Control
                 type="password"
@@ -53,7 +54,9 @@ class Login extends React.Component {
                 onChange={this.handleChange}
                 />
         </Form.Group>
-            <Button type="submit">Log in </Button>
+        <div className="d-flex justify-content-center">
+          <Button variant="dark" type="submit">Log in </Button>
+        </div>
       </Form>
     </div>
     )

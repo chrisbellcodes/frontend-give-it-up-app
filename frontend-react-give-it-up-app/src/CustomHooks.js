@@ -2,6 +2,7 @@ import { useState } from 'react'
 
 const useCreateViceForm = (callback) => {
   const [inputs, setInputs] = useState({
+    category_id: null,
     name: '',
     description: '',
     amount: 0
@@ -11,10 +12,10 @@ const useCreateViceForm = (callback) => {
     if (e) {
       e.preventDefault();
     }
-    callback()
+    callback(inputs)
   }
 
-  const handleInputChange = (e) => {
+  const handleInputChange = (e, catId) => {
     e.persist();
     setInputs(inputs =>({
       ...inputs,

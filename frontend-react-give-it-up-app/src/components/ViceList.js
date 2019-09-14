@@ -9,17 +9,15 @@ const ViceList = (props) => {
       return (<tr>
                 <td>{vice.name}</td>
                 <td>{vice.amount}</td>
-                <td>fuck this</td>
               </tr>)
     })
   }
 
-  return(<Table striped bordered hover variant="light">
+  return(<Table striped bordered hover variant="dark">
     <thead>
       <tr>
         <th>VICE</th>
-        <th>COST</th>
-        <th>USERNAME</th>
+        <th>DONATION</th>
       </tr>
     </thead>
     <tbody>

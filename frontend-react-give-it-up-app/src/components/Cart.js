@@ -8,8 +8,8 @@ import Container from 'react-bootstrap/Container'
 class Cart extends React.Component {
   render() {
     return(
-      <Container>
-        <h1>Yas Cart Yas</h1>
+      <Container className="pt-5 pb-3">
+        <h1>Your Cart Vices</h1>
         <CartList />
       </Container>
     )

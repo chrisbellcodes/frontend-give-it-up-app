@@ -1,5 +1,5 @@
 import React from "react"
-import { getVices, addViceToCart } from '../redux/actions/viceActions'
+import { getVices, addViceToCart, getCategories } from '../redux/actions/viceActions'
 import { connect } from 'react-redux'
 import Vice from '../components/Vice'
 import CreateVice from "../components/CreateVice"
@@ -10,7 +10,18 @@ import Row from 'react-bootstrap/Row'
 
 class ViceContainer extends React.Component {
 
+  state = {
+    vicesCopy: [],
+    categories: [],
+    filter:''
+  }
+
   componentDidMount() {
+    fetch('http://localhost:3000/categories')
+      .then(res => res.json())
+      .then(categories => {
+        this.setState({categories})
+      })
     this.props.getVices()
   }
 
@@ -25,17 +36,33 @@ class ViceContainer extends React.Component {
     return this.props.vices.map( vice => <Vice key={vice.id} handleClick={this.handleClick} {...vice} /> )
   }
 
+  handleFilterChange = (e) => {
+    this.setState({
+      filter: e.target.value
+    })
+  }
+
+  // filterVices = (vices) => {
+  //   if(this.state.filter !== "All Vices") {
+  //     // return vices.filter(vice => vice.category.name === this.state.filter )
+  //   } else {
+  //     return vices
+  //   }
+  // }
+
   render() {
+
     return (
     <div>
-      <Container>
+      <Container className="pt-5 pb-5">
         <Row>
-          <Form>
-            <Form.Control as="select">
-              {this.props.vices.map(vice => <option>{vice.category.name}</option>)}
+          <Form className="pr-3">
+            <Form.Control as="select" value={this.state.filter} onChange={this.hand}>
+              <option>All Vices</option>
+              {this.state.categories.map(cat => <option key={cat.id} value={cat.name} >{cat.name}</option>)}
             </Form.Control>
           </Form>
-          <CreateVice />
+          <CreateVice categories={this.state.categories}/>
         </Row>
       </Container>
 

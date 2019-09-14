@@ -10,17 +10,17 @@ const CartList = (props) => {
         <tr>
           <td>{vice.name}</td>
           <td>{vice.amount}</td>
-          <td>fuck this</td>
+          <td><Button>Remove Vice</Button></td>
         </tr>)
     })
   }
 
-  return(<Table striped bordered hover variant="light">
+  return(<Table striped bordered hover variant="dark">
     <thead>
       <tr>
         <th>VICE</th>
         <th>COST</th>
-        <th>USERNAME</th>
+        <th>Remove</th>
       </tr>
     </thead>
     <tbody>
