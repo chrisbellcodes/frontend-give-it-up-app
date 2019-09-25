@@ -6,7 +6,7 @@ import Button from 'react-bootstrap/Button'
 const ViceList = (props) => {
   const renderVices = () => {
     return props.cart.map(vice => {
-      return (<tr>
+      return (<tr key={vice.id}>
                 <td>{vice.name}</td>
                 <td>{vice.amount}</td>
               </tr>)

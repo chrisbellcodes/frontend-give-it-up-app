@@ -7,6 +7,7 @@ const initialState = {
   subscriptions: [],
   vices: [],
   cart: [],
+  loggedIn: false,
   loading: false
 }
 
@@ -15,11 +16,11 @@ const initialState = {
     case 'LOGIN_REQUEST_START':
       return {...state, loading: true}
     case 'LOGIN_REQUEST_SUCCESS':
-      return {...state, loading: true}
+      return {...state, loading: false}
     case 'PROFILE_REQUEST_START':
       return {...state, loading: true}
     case 'PROFILE_SUCCESS':
-      return {...state, ...action.user}
+      return {...state, loggedIn: true, ...action.user}
       case "ADD_VICE_TO_CART":
         return {...state, cart: [action.vice, ...state.cart]}
     default:

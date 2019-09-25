@@ -9,8 +9,9 @@ export default function withAuth (ComponentToWrap) {
     componentDidMount() {
       if (!localStorage.token) {
         this.props.history.push('/')
+      } else {
+        this.props.setCurrentUser()
       }
-      this.props.setCurrentUser()
     }
 
     render() {
@@ -23,7 +24,7 @@ export default function withAuth (ComponentToWrap) {
 
 const mapStateToProps = (state) => {
   return {
-    loggedIn: state.loggedIn
+    loggedIn: state.currentUser.loggedIn
   }
 }
 
