@@ -3,7 +3,6 @@ import { Switch, Route } from 'react-router-dom'
 import './App.css';
 
 import SigninPage from './containers/SigninPage'
-import Login from './components/Login'
 import NavBar from './components/NavBar'
 import HomePage from './containers/HomePage'
 import Cart from './components/Cart'

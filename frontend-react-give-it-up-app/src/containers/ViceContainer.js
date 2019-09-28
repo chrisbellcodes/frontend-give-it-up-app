@@ -1,5 +1,5 @@
 import React from "react"
-import { getVices, addViceToCart, getCategories } from '../redux/actions/viceActions'
+import { getVices, addViceToCart } from '../redux/actions/viceActions'
 import { connect } from 'react-redux'
 import Vice from '../components/Vice'
 import CreateVice from "../components/CreateVice"

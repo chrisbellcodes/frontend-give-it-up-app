@@ -6,7 +6,7 @@ import Col from 'react-bootstrap/Col'
 import Image from 'react-bootstrap/Image'
 
 const Vice = (props) => {
-  const {id, name,  amount, description, category } = props
+  const { name, amount } = props
 
   return(
     <Card bg="dark" text="light" style={{ "min-width": '200px' }} as={Col} xs={2} className="mx-2 my-4">

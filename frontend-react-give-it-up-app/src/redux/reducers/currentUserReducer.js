@@ -7,6 +7,7 @@ const initialState = {
   subscriptions: [],
   vices: [],
   cart: [],
+  cartTotal: null,
   loggedIn: false,
   loading: false
 }
@@ -23,6 +24,8 @@ const initialState = {
       return {...state, loggedIn: true, ...action.user}
       case "ADD_VICE_TO_CART":
         return {...state, cart: [action.vice, ...state.cart]}
+      case 'TOTAL_CART':
+        return {...state, cartTotal: action.cartTotal}
     default:
       return state
   }

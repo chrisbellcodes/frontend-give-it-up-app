@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import withAuth from '../hoc/withAuth'
+import { connect } from 'react-redux'
 
 import Navbar from 'react-bootstrap/Navbar'
 import Nav from 'react-bootstrap/Nav'
@@ -22,7 +23,7 @@ const NavBar = (props) => {
 
           {!props.loggedIn ? null :
             <Nav.Item>
-              <Nav.Link as={Link} to='/Cart'>Cart</Nav.Link>
+              <Nav.Link as={Link} to='/Cart'>Cart {props.cart.length > 0 ? `(${props.cart.length})` : null}</Nav.Link>
             </Nav.Item>}
 
           {props.loggedIn ? null :
@@ -39,5 +40,8 @@ const NavBar = (props) => {
 
   )
 }
+const mapStateToProps = state => {
+  return { cart: state.currentUser.cart }
+}
 
-export default withAuth(NavBar)
+export default withAuth(connect(mapStateToProps)(NavBar))

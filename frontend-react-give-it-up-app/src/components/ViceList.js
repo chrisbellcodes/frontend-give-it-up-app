@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import Table from 'react-bootstrap/Table'
-import Button from 'react-bootstrap/Button'
+
 
 const ViceList = (props) => {
   const renderVices = () => {
